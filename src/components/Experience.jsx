@@ -5,9 +5,9 @@ export const Experience = () => {
     <>
       <Float
         rotation-x={-Math.PI / 4}
-        floatIntensity={1}
-        speed={2}
-        rotationIntensity={2}
+        floatIntensity={0.3}
+        speed={1}
+        rotationIntensity={0.5}
       >
         <Book />
       </Float>

@@ -1,36 +1,26 @@
-import { Loader } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useState, useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { Experience } from "../components/Experience";
 import { UI } from "../components/UI";
 
 const User = () => {
-  const [showBook, setShowBook] = useState(false);
-
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowBook(true);
-    }, 2500);
-
-    return () => clearTimeout(timer);
+    // Initialize AOS untuk komponen UI
+    import('aos').then((AOS) => {
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+      });
+    });
   }, []);
 
   return (
     <>
       <UI />
-      <Loader />
       
-      {/* Canvas dengan animasi Tailwind */}
-      <div 
-        className={`
-          fixed top-0 left-0 w-full h-full z-10
-          transition-all duration-1000 ease-out
-          ${showBook 
-            ? "opacity-100 translate-y-0 scale-100" 
-            : "opacity-0 translate-y-24 scale-95"
-          }
-        `}
-      >
+      {/* Canvas dengan animasi fade-in smooth */}
+      <div className="fixed top-0 left-0 w-full h-full z-10 animate-fade-in">
         <Canvas 
           shadows 
           camera={{
@@ -45,6 +35,20 @@ const User = () => {
           </group>
         </Canvas>
       </div>
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { 
+            opacity: 0;
+          }
+          to { 
+            opacity: 1;
+          }
+        }
+        .animate-fade-in {
+          animation: fadeIn 1.2s ease-out forwards;
+        }
+      `}</style>
     </>
   )
 }

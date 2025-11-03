@@ -1,5 +1,6 @@
 import { atom, useAtom } from "jotai";
 import { useEffect, useState } from "react";
+
 import 'aos/dist/aos.css';
 
 const pictures = [
@@ -43,9 +44,8 @@ pages.push({
 export const UI = () => {
   const [page, setPage] = useAtom(pageAtom);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isCardVisible, setIsCardVisible] = useState(true);
+  const [isCardVisible, setIsCardVisible] = useState(false); // Default false agar tidak muncul
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
-  const [showLightEffect, setShowLightEffect] = useState(false);
 
   useEffect(() => {
     import('aos').then((AOS) => {
@@ -55,15 +55,6 @@ export const UI = () => {
         offset: 100,
       });
     });
-
-
-    const timer = setTimeout(() => {
-      setShowLightEffect(true);
-  
-      setTimeout(() => {
-        setShowLightEffect(false);
-      }, 1000);
-    }, 2000); 
 
     const handleFirstInteraction = () => {
       setHasUserInteracted(true);
@@ -77,7 +68,6 @@ export const UI = () => {
     document.addEventListener('touchstart', handleFirstInteraction);
 
     return () => {
-      clearTimeout(timer);
       document.removeEventListener('click', handleFirstInteraction);
       document.removeEventListener('keydown', handleFirstInteraction);
       document.removeEventListener('touchstart', handleFirstInteraction);
@@ -88,6 +78,7 @@ export const UI = () => {
     if (hasUserInteracted && page > 0) {
       const audio = new Audio("/audios/page-flip-01a.mp3");
       audio.play().catch(() => {
+        // Handle error silently
       });
     }
   }, [page, hasUserInteracted]);
@@ -99,7 +90,7 @@ export const UI = () => {
           <a
             className="pointer-events-auto mt-5 ml-10"
             style={{ 
-              transform: 'scale(5.5)',
+              transform: 'scale(4.5)',
               transformOrigin: 'left top'
             }}
             href="#"
@@ -140,7 +131,7 @@ export const UI = () => {
 
       <div className="fixed inset-0 flex items-center justify-center select-none z-0">
         <div className="relative">
-          <h1 className={`shrink-0 text-transparent text-13xl font-black italic outline-text md:text-13xl text-8xl ${showLightEffect ? 'text-light-sweep' : ''}`}>
+          <h1 className="shrink-0 text-transparent text-13xl font-black italic outline-text md:text-13xl text-8xl">
             <span data-aos="fade-right" data-aos-delay="100">HMPS</span>
             <span data-aos="fade-right" data-aos-delay="300"> </span>
             <span data-aos="fade-right" data-aos-delay="500">MI</span>
@@ -148,70 +139,8 @@ export const UI = () => {
         </div>
       </div>
 
-      {isCardVisible && (
-        <>
-          <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/50 backdrop-blur-sm z-20 hidden"></div>
-          <div className="bg-white fixed top-32 left-10 right-10 bottom-0 mx-auto p-6 rounded-t-3xl shadow-lg border border-gray-200 overflow-auto z-30 hidden">
-            <button 
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
-              onClick={() => setIsCardVisible(false)}
-            >
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              >
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-            <div className="text-center pt-2">
-              ....
-            </div>
-          </div>
-        </>
-      )}
-
       <style>
         {`
-          @keyframes textLightSweep {
-            0% {
-              mask-position: 100% 0;
-              -webkit-mask-position: 100% 0;
-            }
-            100% {
-              mask-position: -100% 0;
-              -webkit-mask-position: -100% 0;
-            }
-          }
-          
-          .text-light-sweep {
-            position: relative;
-            mask-image: linear-gradient(
-              75deg,
-              transparent 0%,
-              white 20%,
-              white 80%,
-              transparent 100%
-            );
-            -webkit-mask-image: linear-gradient(
-              75deg,
-              transparent 0%,
-              white 20%,
-              white 80%,
-              transparent 100%
-            );
-            mask-size: 200% 100%;
-            -webkit-mask-size: 200% 100%;
-            animation: textLightSweep 1s ease-in-out forwards;
-          }
-
           /* Animasi masuk untuk setiap kata */
           [data-aos="fade-right"] {
             opacity: 0;
