@@ -1,9 +1,22 @@
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Experience } from "../components/Experience";
 import { UI } from "../components/UI";
 
 const User = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   useEffect(() => {
     // Initialize AOS untuk komponen UI
     import('aos').then((AOS) => {
@@ -24,13 +37,13 @@ const User = () => {
         <Canvas 
           shadows 
           camera={{
-            position: [-0.5, 1, window.innerWidth > 800 ? 4 : 9],
-            fov: 45,
+            position: isMobile ? [0, 1, 5] : [-0.5, 1, window.innerWidth > 800 ? 4 : 9],
+            fov: isMobile ? 50 : 45,
           }}
         >
           <group position-y={0}>
             <Suspense fallback={null}>
-              <Experience />
+              <Experience isMobile={isMobile} />
             </Suspense>
           </group>
         </Canvas>
