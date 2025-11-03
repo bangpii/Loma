@@ -5,6 +5,7 @@ import { UI } from "../components/UI";
 
 const User = () => {
   useEffect(() => {
+    // Initialize AOS untuk komponen UI
     import('aos').then((AOS) => {
       AOS.init({
         duration: 800,
@@ -23,8 +24,8 @@ const User = () => {
         <Canvas 
           shadows 
           camera={{
-            position: [-0.5, 1, window.innerWidth > 800 ? 4 : 6],
-            fov: window.innerWidth > 800 ? 45 : 55,
+            position: [-0.5, 1, window.innerWidth > 800 ? 4 : 9],
+            fov: 45,
           }}
         >
           <group position-y={0}>
