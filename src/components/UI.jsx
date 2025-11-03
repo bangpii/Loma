@@ -143,10 +143,9 @@ export const UI = () => {
       </main>
 
       {/* CARD CONTENT INFORMASI - TIDAK DIHAPUS */}
-      {isCardVisible && (
         <>
-          <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/50 backdrop-blur-sm z-20"></div>
-          <div className="bg-white fixed top-32 left-10 right-10 bottom-0 mx-auto p-6 rounded-t-3xl shadow-lg border border-gray-200 overflow-auto z-30">
+          <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/50 backdrop-blur-sm z-20 hidden"></div>
+          <div className="bg-white fixed top-32 left-10 right-10 bottom-0 mx-auto p-6 rounded-t-3xl shadow-lg border border-gray-200 overflow-auto z-30 hidden">
             <button 
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
               onClick={() => setIsCardVisible(false)}
@@ -171,7 +170,7 @@ export const UI = () => {
             </div>
           </div>
         </>
-      )}
+      
 
       <div className="fixed inset-0 flex items-center justify-center select-none z-0">
         <div className="relative">

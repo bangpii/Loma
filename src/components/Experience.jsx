@@ -16,8 +16,9 @@ export const Experience = ({ isMobile = false }) => {
       <OrbitControls 
         enableZoom={true}
         enablePan={!isMobile}
-        minDistance={isMobile ? 4 : 5}
-        maxDistance={isMobile ? 8 : 15}
+        minDistance={isMobile ? 4 : 2} // Diperbolehkan zoom lebih dekat di desktop
+        maxDistance={isMobile ? 8 : 20} // Diperbolehkan zoom lebih jauh di desktop
+        zoomSpeed={0.8} // Kecepatan zoom yang nyaman
       />
       
       <Environment preset="studio" />
