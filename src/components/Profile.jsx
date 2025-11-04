@@ -5,7 +5,7 @@ const Profile = () => {
     <div className="flex flex-col items-center text-gray-800 w-full">
       {/* Bagian gambar sebagai background cover */}
       <div
-        className="w-full h-72 sm:h-80 md:h-96 bg-[url('./images/bg.png')] bg-cover bg-center rounded-t-2xl shadow-md"
+        className="w-full h-72 sm:h-80 md:h-96 bg-[url('./bg.png')] bg-cover bg-center rounded-t-2xl shadow-md"
       />
 
       {/* Konten penjelasan di bawah gambar */}
