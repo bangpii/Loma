@@ -27,7 +27,7 @@ const Profile = () => {
       />
 
       {/* Konten teks */}
-      <div className="w-full max-w-3xl px-5 sm:px-6 py-6 text-left space-y-4">
+      <div className="w-full max-w-3xl px-5 sm:px-6 py-6 text-left space-y-4 mb-[5rem]">
         <h1 className="text-2xl font-bold text-center mb-4">APA ITU HMPS MI?</h1>
         <p className="leading-relaxed text-justify">
           HMPS MI (Himpunan Mahasiswa Program Studi Manajemen Informatika) adalah wadah organisasi 
@@ -42,12 +42,46 @@ const Profile = () => {
           berprestasi dan berkontribusi positif bagi masyarakat.
         </p>
         <p className="leading-relaxed text-justify">
-          Melalui berbagai program kerja dan kegiatan internal maupun eksternal, HMPS MI berupaya menciptakan 
-          lingkungan yang inspiratif dan produktif bagi seluruh anggotanya. Organisasi ini tidak hanya menjadi 
-          tempat belajar dan berorganisasi, tetapi juga wadah untuk mempererat solidaritas, menumbuhkan jiwa 
-          kepemimpinan, serta menyiapkan mahasiswa agar siap bersaing di dunia profesional yang dinamis.
+        Melalui berbagai program kerja dan kegiatan internal maupun eksternal, HMPS MI berupaya menciptakan 
+        lingkungan yang inspiratif dan produktif bagi seluruh anggotanya. Organisasi ini tidak hanya menjadi 
+        tempat belajar dan berorganisasi, tetapi juga wadah untuk mempererat solidaritas, menumbuhkan jiwa 
+        kepemimpinan, serta menyiapkan mahasiswa agar siap bersaing di dunia profesional yang dinamis.
         </p>
-      </div>
+
+      </div>{/* 🔹 Logo & teks kabinet */}
+<div className="flex flex-col items-center justify-center -mt-[5rem] mb-20 text-center select-none">
+  {/* 🔸 Logo kabinet */}
+  <div className="inline-block relative">
+    <img
+      src="/title/logo_kabinet.png"
+      alt="Logo Kabinet Evolutionnarine"
+      className="
+        object-contain
+        drop-shadow-xl
+        transition-transform duration-500 hover:scale-110
+      "
+      style={{
+        display: 'inline-block',
+        width: '95rem',      // 📱 di HP hampir full lebar layar
+        maxWidth: '700rem',  // 💻 besar di desktop tapi tetap elegan
+        height: 'auto',     // ⚡ menjaga rasio
+      }}
+    />
+  </div>
+
+  {/* 🔸 Teks di bawah logo */}
+  <div className="-mt-[10rem]">
+    <h1 className="text-2xl sm:text-3xl font-bold tracking-wide text-gray-800 drop-shadow-sm">
+      KABINET EVOLUTIONNARINE
+    </h1>
+    <h2 className="text-sm sm:text-2xl text-gray-600 mt-1">
+      2024 / 2025
+    </h2>
+  </div>
+</div>
+
+
+  
     </div>
   );
 };
