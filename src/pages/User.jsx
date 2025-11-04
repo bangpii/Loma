@@ -1,10 +1,12 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useState } from "react";
 import { Experience } from "../components/Experience";
-import { UI } from "../components/UI";
+import { UI, bookVisibilityAtom } from "../components/UI";
+import { useAtom } from "jotai";
 
 const User = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [bookVisibility] = useAtom(bookVisibilityAtom);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -18,7 +20,6 @@ const User = () => {
   }, []);
 
   useEffect(() => {
-    // Initialize AOS untuk komponen UI
     import('aos').then((AOS) => {
       AOS.init({
         duration: 800,
@@ -32,8 +33,10 @@ const User = () => {
     <>
       <UI />
       
-
-      <div className="fixed top-0 left-0 w-full h-full z-10 animate-fade-in">
+      {/* Canvas buku 3D - Gunakan CSS untuk hide/show tanpa re-render */}
+      <div className={`fixed top-0 left-0 w-full h-full z-10 transition-all duration-300 ${
+        bookVisibility ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      }`}>
         <Canvas 
           shadows 
           camera={{

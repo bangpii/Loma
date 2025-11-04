@@ -32,6 +32,7 @@ const pictures = [
 
 export const pageAtom = atom(0);
 export const contentModalAtom = atom({ visible: false, content: null });
+export const bookVisibilityAtom = atom(true); // Atom baru untuk kontrol visibility buku
 
 export const pages = [
   {
@@ -54,9 +55,11 @@ pages.push({
 export const UI = () => {
   const [page, setPage] = useAtom(pageAtom);
   const [contentModal, setContentModal] = useAtom(contentModalAtom);
+  const [bookVisibility, setBookVisibility] = useAtom(bookVisibilityAtom); // State untuk visibility buku
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [modalAnimation, setModalAnimation] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -103,6 +106,17 @@ export const UI = () => {
       });
     }
   }, [page, hasUserInteracted]);
+
+  useEffect(() => {
+    if (contentModal.visible) {
+      // Trigger animasi ketika modal muncul dan sembunyikan buku
+      setModalAnimation(true);
+      setBookVisibility(false); // Sembunyikan buku ketika modal aktif
+    } else {
+      setModalAnimation(false);
+      setBookVisibility(true); // Tampilkan buku kembali ketika modal ditutup
+    }
+  }, [contentModal.visible]);
 
   const closeContentModal = () => {
     console.log('Closing modal');
@@ -159,12 +173,26 @@ export const UI = () => {
         </div>
       </main>
 
-      {/* Modal untuk menampilkan konten halaman - TIDAK BERUBAH */}
+      {/* Modal untuk menampilkan konten halaman - DENGAN ANIMASI */}
       {contentModal.visible && (
         console.log('Modal is visible with content:', contentModal.content),
         <>
-          <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/50 backdrop-blur-sm z-20 "></div>
-          <div className="bg-white fixed top-32 left-10 right-10 bottom-0 mx-auto p-6 rounded-t-3xl shadow-lg border border-gray-200 overflow-auto z-30 ">
+          <div 
+            className="fixed top-0 left-0 right-0 bottom-0 bg-black/50 backdrop-blur-sm z-20 animate-fade-in"
+          />
+          <div 
+            className={`
+              bg-white fixed mx-auto p-6 rounded-t-3xl shadow-lg border border-gray-200 overflow-auto z-30 
+              ${isMobile 
+                ? "top-20 left-0 right-0 bottom-0 rounded-t-3xl" 
+                : "top-32 left-10 right-10 bottom-0"
+              }
+              animate-slide-up
+            `}
+            data-aos={modalAnimation ? "fade-up" : ""}
+            data-aos-duration="500"
+            data-aos-easing="ease-out"
+          >
             <button 
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
               onClick={closeContentModal}
@@ -184,7 +212,7 @@ export const UI = () => {
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
             </button>
-            <div className="text-center pt-2">
+            <div className={`${isMobile ? "pt-2" : "pt-2"}`}>
               {contentModal.content}
             </div>
           </div>
@@ -235,6 +263,43 @@ export const UI = () => {
           [data-aos="fade-right"].aos-animate {
             opacity: 1;
             transform: translateX(0);
+          }
+
+          /* Animasi fade-up untuk modal */
+          [data-aos="fade-up"] {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.5s ease-out;
+          }
+
+          [data-aos="fade-up"].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+          /* Animasi custom untuk backdrop */
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+
+          @keyframes slideUp {
+            from { 
+              opacity: 0;
+              transform: translateY(100px);
+            }
+            to { 
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+          }
+
+          .animate-slide-up {
+            animation: slideUp 0.4s ease-out forwards;
           }
 
           /* Pastikan teks tetap transparan dengan outline */
