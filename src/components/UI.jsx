@@ -173,49 +173,63 @@ export const UI = () => {
       </main>
 
       {contentModal.visible && (
-        console.log('Modal is visible with content:', contentModal.content),
-        <>
-          <div 
-            className="fixed top-0 left-0 right-0 bottom-0 bg-black/50 backdrop-blur-sm z-20 animate-fade-in"
-          />
-          <div 
-            className={`
-              bg-white fixed mx-auto p-6 rounded-t-3xl shadow-lg border border-gray-200 overflow-auto z-30 
-              ${isMobile 
-                ? "top-20 left-0 right-0 bottom-0 rounded-t-3xl" 
-                : "top-32 left-10 right-10 bottom-0"
-              }
-              animate-slide-up
-            `}
-            data-aos={modalAnimation ? "fade-up" : ""}
-            data-aos-duration="500"
-            data-aos-easing="ease-out"
-          >
-            <button 
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
-              onClick={closeContentModal}
-            >
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              >
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-            <div className={`${isMobile ? "pt-2" : "pt-2"}`}>
-              {contentModal.content}
-            </div>
-          </div>
-        </>
-      )}
+  console.log('Modal is visible with content:', contentModal.content),
+  <>
+    {/* Overlay hitam transparan */}
+    <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/50 backdrop-blur-sm z-20 animate-fade-in" />
+
+    {/* Konten modal */}
+    <div
+      className={`
+        bg-white fixed mx-auto p-6 rounded-t-3xl shadow-lg border border-gray-200 overflow-auto z-30 overflow-x-hidden 
+        ${isMobile 
+          ? "top-20 left-0 right-0 bottom-0 rounded-t-3xl" 
+          : "top-32 left-10 right-10 bottom-0"
+        }
+        animate-slide-up
+      `}
+      data-aos={modalAnimation ? "fade-up" : ""}
+      data-aos-duration="500"
+      data-aos-easing="ease-out"
+    >
+
+      {/* Tombol silang */}
+      <button
+        className="
+          absolute top-4 right-4
+          bg-black/60 hover:bg-black/80
+          text-white rounded-full
+          w-9 h-9 flex items-center justify-center
+          shadow-md transition-all duration-300
+        "
+        onClick={closeContentModal}
+        aria-label="Close modal"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="stroke-white"
+        >
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      {/* Isi konten modal */}
+      <div className={`${isMobile ? "pt-2" : "pt-2"}`}>
+        {contentModal.content}
+      </div>
+    </div>
+  </>
+)}
+
 
       <div className="fixed inset-0 flex items-center justify-center select-none z-0">
         <div className="relative">
