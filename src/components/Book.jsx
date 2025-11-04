@@ -17,16 +17,26 @@ import {
   Vector3,
 } from "three";
 import { degToRad } from "three/src/math/MathUtils.js";
-import { pageAtom, pages } from "./UI";
+import { pageAtom, pages, contentModalAtom } from "./UI";
 
-const easingFactor = 0.5; // Controls the speed of the easing
-const easingFactorFold = 0.3; // Controls the speed of the easing
-const insideCurveStrength = 0.18; // Controls the strength of the curve
-const outsideCurveStrength = 0.05; // Controls the strength of the curve
-const turningCurveStrength = 0.09; // Controls the strength of the curve
+// Import komponen untuk modal
+import Profile from './Profile';
+import Devisi from './Devisi';
+import Team from './Team';
+import VisiMisi from './VisiMisi';
+import News from './News';
+import Articel from './Articel';
+import { Galery } from './Galery';
+import Contact from './Contact';
+
+const easingFactor = 0.5;
+const easingFactorFold = 0.3;
+const insideCurveStrength = 0.18;
+const outsideCurveStrength = 0.05;
+const turningCurveStrength = 0.09;
 
 const PAGE_WIDTH = 1.28;
-const PAGE_HEIGHT = 1.71; // 4:3 aspect ratio
+const PAGE_HEIGHT = 1.71;
 const PAGE_DEPTH = 0.003;
 const PAGE_SEGMENTS = 30;
 const SEGMENT_WIDTH = PAGE_WIDTH / PAGE_SEGMENTS;
@@ -47,15 +57,13 @@ const skinIndexes = [];
 const skinWeights = [];
 
 for (let i = 0; i < position.count; i++) {
-  // ALL VERTICES
-  vertex.fromBufferAttribute(position, i); // get the vertex
-  const x = vertex.x; // get the x position of the vertex
+  vertex.fromBufferAttribute(position, i);
+  const x = vertex.x;
+  const skinIndex = Math.max(0, Math.floor(x / SEGMENT_WIDTH));
+  let skinWeight = (x % SEGMENT_WIDTH) / SEGMENT_WIDTH;
 
-  const skinIndex = Math.max(0, Math.floor(x / SEGMENT_WIDTH)); // calculate the skin index
-  let skinWeight = (x % SEGMENT_WIDTH) / SEGMENT_WIDTH; // calculate the skin weight
-
-  skinIndexes.push(skinIndex, skinIndex + 1, 0, 0); // set the skin indexes
-  skinWeights.push(1 - skinWeight, skinWeight, 0, 0); // set the skin weights
+  skinIndexes.push(skinIndex, skinIndex + 1, 0, 0);
+  skinWeights.push(1 - skinWeight, skinWeight, 0, 0);
 }
 
 pageGeometry.setAttribute(
@@ -117,7 +125,7 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
         bone.position.x = SEGMENT_WIDTH;
       }
       if (i > 0) {
-        bones[i - 1].add(bone); // attach the new bone to the previous bone
+        bones[i - 1].add(bone);
       }
     }
     const skeleton = new Skeleton(bones);
@@ -159,8 +167,6 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
     mesh.bind(skeleton);
     return mesh;
   }, []);
-
-  // useHelper(skinnedMeshRef, SkeletonHelper, "red");
 
   useFrame((_, delta) => {
     if (!skinnedMeshRef.current) {
@@ -231,9 +237,26 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
     }
   });
 
-  const [_, setPage] = useAtom(pageAtom);
+  const [currentPage, setPage] = useAtom(pageAtom);
+  const [_, setContentModal] = useAtom(contentModalAtom);
   const [highlighted, setHighlighted] = useState(false);
   useCursor(highlighted);
+
+  // Fungsi untuk mendapatkan konten berdasarkan halaman
+  const getContentByPage = (pageNum) => {
+    console.log('getContentByPage called with:', pageNum);
+    switch(pageNum) {
+      case 1: return <Profile />;
+      case 2: return <Devisi />;
+      case 3: return <Team />;
+      case 4: return <VisiMisi />;
+      case 5: return <News />;
+      case 6: return <Articel />;
+      case 7: return <Galery />;
+      case 8: return <Contact />;
+      default: return null;
+    }
+  };
 
   return (
     <group
@@ -249,7 +272,41 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
       }}
       onClick={(e) => {
         e.stopPropagation();
-        setPage(opened ? number : number + 1);
+        
+        console.log('=== CLICK DEBUG ===');
+        console.log('Page number:', number);
+        console.log('Front image:', front);
+        console.log('Back image:', back);
+        console.log('Opened:', opened);
+        console.log('Click position:', e.point.x);
+        
+        // DETEKSI GAMBAR YANG DIKLIK BERDASARKAN POSISI
+        const clickPosition = e.point.x;
+        
+        // Jika halaman terbuka (opened), maka yang terlihat adalah BACK image
+        // Jika halaman tertutup (!opened), maka yang terlihat adalah FRONT image
+        const visibleImage = opened ? back : front;
+        const isContentImage = visibleImage.startsWith('halaman_page');
+        
+        console.log('Visible image:', visibleImage);
+        console.log('Is content image?', isContentImage);
+        
+        // HANYA tampilkan modal jika gambar yang TERLIHAT adalah "halaman_pageX"
+        // dan halaman antara 1-8
+        if (isContentImage && number >= 1 && number <= 8) {
+          console.log('SHOWING MODAL for page', number);
+          const content = getContentByPage(number);
+          if (content) {
+            setContentModal({
+              visible: true,
+              content: content
+            });
+          }
+        } else {
+          console.log('BALIK HALAMAN for page', number);
+          // Untuk SEMUA kasus lain (page1, page2, cover, back cover), tetap behavior lama (membalik halaman)
+          setPage(opened ? number : number + 1);
+        }
         setHighlighted(false);
       }}
     >

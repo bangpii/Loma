@@ -32,7 +32,7 @@ const User = () => {
     <>
       <UI />
       
-      {/* Canvas dengan animasi fade-in smooth */}
+
       <div className="fixed top-0 left-0 w-full h-full z-10 animate-fade-in">
         <Canvas 
           shadows 

@@ -1,5 +1,13 @@
 import { atom, useAtom } from "jotai";
 import { useEffect, useState } from "react";
+import Profile from './Profile';
+import Devisi from './Devisi';
+import Team from './Team';
+import VisiMisi from './VisiMisi';
+import News from './News';
+import Articel from './Articel';
+import { Galery } from './Galery';
+import Contact from './Contact';
 
 import 'aos/dist/aos.css';
 
@@ -23,6 +31,8 @@ const pictures = [
 ];
 
 export const pageAtom = atom(0);
+export const contentModalAtom = atom({ visible: false, content: null });
+
 export const pages = [
   {
     front: "book-cover",
@@ -43,8 +53,8 @@ pages.push({
 
 export const UI = () => {
   const [page, setPage] = useAtom(pageAtom);
+  const [contentModal, setContentModal] = useAtom(contentModalAtom);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isCardVisible, setIsCardVisible] = useState(false); // Default false agar tidak muncul
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -90,10 +100,17 @@ export const UI = () => {
     if (hasUserInteracted && page > 0) {
       const audio = new Audio("/audios/page-flip-01a.mp3");
       audio.play().catch(() => {
-        // Handle error silently
       });
     }
   }, [page, hasUserInteracted]);
+
+  const closeContentModal = () => {
+    console.log('Closing modal');
+    setContentModal({
+      visible: false,
+      content: null
+    });
+  };
 
   return (
     <>
@@ -142,13 +159,15 @@ export const UI = () => {
         </div>
       </main>
 
-      {/* CARD CONTENT INFORMASI - TIDAK DIHAPUS */}
+      {/* Modal untuk menampilkan konten halaman - TIDAK BERUBAH */}
+      {contentModal.visible && (
+        console.log('Modal is visible with content:', contentModal.content),
         <>
-          <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/50 backdrop-blur-sm z-20 hidden"></div>
-          <div className="bg-white fixed top-32 left-10 right-10 bottom-0 mx-auto p-6 rounded-t-3xl shadow-lg border border-gray-200 overflow-auto z-30 hidden">
+          <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/50 backdrop-blur-sm z-20 "></div>
+          <div className="bg-white fixed top-32 left-10 right-10 bottom-0 mx-auto p-6 rounded-t-3xl shadow-lg border border-gray-200 overflow-auto z-30 ">
             <button 
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
-              onClick={() => setIsCardVisible(false)}
+              onClick={closeContentModal}
             >
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -166,11 +185,11 @@ export const UI = () => {
               </svg>
             </button>
             <div className="text-center pt-2">
-              ....
+              {contentModal.content}
             </div>
           </div>
         </>
-      
+      )}
 
       <div className="fixed inset-0 flex items-center justify-center select-none z-0">
         <div className="relative">
