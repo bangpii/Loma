@@ -32,7 +32,7 @@ const pictures = [
 
 export const pageAtom = atom(0);
 export const contentModalAtom = atom({ visible: false, content: null });
-export const bookVisibilityAtom = atom(true); // Atom baru untuk kontrol visibility buku
+export const bookVisibilityAtom = atom(true); 
 
 export const pages = [
   {
@@ -55,7 +55,7 @@ pages.push({
 export const UI = () => {
   const [page, setPage] = useAtom(pageAtom);
   const [contentModal, setContentModal] = useAtom(contentModalAtom);
-  const [bookVisibility, setBookVisibility] = useAtom(bookVisibilityAtom); // State untuk visibility buku
+  const [bookVisibility, setBookVisibility] = useAtom(bookVisibilityAtom); 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -109,12 +109,11 @@ export const UI = () => {
 
   useEffect(() => {
     if (contentModal.visible) {
-      // Trigger animasi ketika modal muncul dan sembunyikan buku
       setModalAnimation(true);
-      setBookVisibility(false); // Sembunyikan buku ketika modal aktif
+      setBookVisibility(false); 
     } else {
       setModalAnimation(false);
-      setBookVisibility(true); // Tampilkan buku kembali ketika modal ditutup
+      setBookVisibility(true);
     }
   }, [contentModal.visible]);
 
@@ -173,7 +172,6 @@ export const UI = () => {
         </div>
       </main>
 
-      {/* Modal untuk menampilkan konten halaman - DENGAN ANIMASI */}
       {contentModal.visible && (
         console.log('Modal is visible with content:', contentModal.content),
         <>
@@ -224,7 +222,7 @@ export const UI = () => {
           <h1 className={`shrink-0 text-transparent font-black italic outline-text ${
             isMobile 
               ? "text-6xl flex flex-col items-center justify-center gap-0" 
-              : "text-13xl md:text-13xl text-8xl"
+              : "text-13xl md:text-10xl text-8xl"
           }`}>
             <span 
               data-aos="fade-right" 

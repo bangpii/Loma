@@ -19,7 +19,6 @@ import {
 import { degToRad } from "three/src/math/MathUtils.js";
 import { pageAtom, pages, contentModalAtom } from "./UI";
 
-// Import komponen untuk modal
 import Profile from './Profile';
 import Devisi from './Devisi';
 import Team from './Team';
@@ -242,7 +241,6 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
   const [highlighted, setHighlighted] = useState(false);
   useCursor(highlighted);
 
-  // Fungsi untuk mendapatkan konten berdasarkan halaman
   const getContentByPage = (pageNum) => {
     console.log('getContentByPage called with:', pageNum);
     switch(pageNum) {
@@ -280,19 +278,14 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
         console.log('Opened:', opened);
         console.log('Click position:', e.point.x);
         
-        // DETEKSI GAMBAR YANG DIKLIK BERDASARKAN POSISI
         const clickPosition = e.point.x;
         
-        // Jika halaman terbuka (opened), maka yang terlihat adalah BACK image
-        // Jika halaman tertutup (!opened), maka yang terlihat adalah FRONT image
         const visibleImage = opened ? back : front;
         const isContentImage = visibleImage.startsWith('halaman_page');
         
         console.log('Visible image:', visibleImage);
         console.log('Is content image?', isContentImage);
         
-        // HANYA tampilkan modal jika gambar yang TERLIHAT adalah "halaman_pageX"
-        // dan halaman antara 1-8
         if (isContentImage && number >= 1 && number <= 8) {
           console.log('SHOWING MODAL for page', number);
           const content = getContentByPage(number);
@@ -304,7 +297,6 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
           }
         } else {
           console.log('BALIK HALAMAN for page', number);
-          // Untuk SEMUA kasus lain (page1, page2, cover, back cover), tetap behavior lama (membalik halaman)
           setPage(opened ? number : number + 1);
         }
         setHighlighted(false);
