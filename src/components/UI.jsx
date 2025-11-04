@@ -200,7 +200,7 @@ export const UI = () => {
           bg-black/60 hover:bg-black/80
           text-white rounded-full
           w-9 h-9 flex items-center justify-center
-          shadow-md transition-all duration-300
+          shadow-md transition-all duration-300 z-50
         "
         onClick={closeContentModal}
         aria-label="Close modal"

@@ -3,21 +3,24 @@ import React from 'react';
 const Profile = () => {
   return (
     <div className="flex flex-col items-center text-gray-800 w-full">
-      {/* Gambar background full width untuk semua device */}
+      {/* Gambar background dengan zoom in di mobile */}
       <div
         className="
-          w-screen /* ⚡ Pakai screen width bukan full */
+          w-screen
           bg-[url('/bg.png')] 
           bg-no-repeat 
           bg-center 
-          bg-contain sm:bg-cover 
-          shadow-md
+          bg-contain 
+          sm:bg-contain
+          md:bg-cover
+          scale-110 /* ⚡ Zoom in di semua device */
+          sm:scale-100 /* ⚡ Kembali normal di tablet/desktop */
           transition-all duration-500
           aspect-[16/10] sm:aspect-[16/9] md:aspect-[16/8]
           -mt-10 
-          -ml-4 -mr-4 /* ⚡ Untuk mobile */
-          sm:-ml-6 sm:-mr-6 /* ⚡ Untuk tablet */
-          md:-ml-8 md:-mr-8 /* ⚡ Untuk desktop */
+          -ml-4 -mr-4
+          sm:-ml-6 sm:-mr-6
+          md:-ml-8 md:-mr-8
           mb-4
           rounded-t-2xl
         "
@@ -39,12 +42,11 @@ const Profile = () => {
           berprestasi dan berkontribusi positif bagi masyarakat.
         </p>
         <p className="leading-relaxed text-justify">
-        Melalui berbagai program kerja dan kegiatan internal maupun eksternal, HMPS MI berupaya menciptakan 
-        lingkungan yang inspiratif dan produktif bagi seluruh anggotanya. Organisasi ini tidak hanya menjadi 
-        tempat belajar dan berorganisasi, tetapi juga wadah untuk mempererat solidaritas, menumbuhkan jiwa 
-        kepemimpinan, serta menyiapkan mahasiswa agar siap bersaing di dunia profesional yang dinamis.
+          Melalui berbagai program kerja dan kegiatan internal maupun eksternal, HMPS MI berupaya menciptakan 
+          lingkungan yang inspiratif dan produktif bagi seluruh anggotanya. Organisasi ini tidak hanya menjadi 
+          tempat belajar dan berorganisasi, tetapi juga wadah untuk mempererat solidaritas, menumbuhkan jiwa 
+          kepemimpinan, serta menyiapkan mahasiswa agar siap bersaing di dunia profesional yang dinamis.
         </p>
-
       </div>
     </div>
   );
