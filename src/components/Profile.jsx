@@ -9,20 +9,20 @@ const Profile = () => {
       image: "/profile/cowo.png",
     },
     {
-      name: "M Hafizh Batu Bara",
-      position: "Wakil Ketua Himpunan",
+      name: "M Hafizh BB",
+      position: "Wakil Ketua",
       image: "/profile/cowo.png",
     },
   ];
 
   // 🔹 Data card anggota (bisa ditambah lewat CMS nanti)
   const members = [
-    { name: "Nama Anggota 1", position: "Divisi 1", image: "/profile/cowo.png" },
-    { name: "Nama Anggota 2", position: "Divisi 2", image: "/profile/cowo.png" },
-    { name: "Nama Anggota 3", position: "Divisi 3", image: "/profile/cowo.png" },
-    { name: "Nama Anggota 4", position: "Divisi 4", image: "/profile/cowo.png" },
-    { name: "Nama Anggota 5", position: "Divisi 5", image: "/profile/cowo.png" },
-    { name: "Nama Anggota 6", position: "Divisi 6", image: "/profile/cowo.png" },
+    { name: "Mauliza Azizah", position: "Sekertaris Umum", image: "/profile/cewe.png" },
+    { name: "Syafitri Uswatun", position: "Wakil Sekertaris", image: "/profile/cewe.png" },
+    { name: "Amira Nadhifa N", position: "Bendahara Umum", image: "/profile/cewe.png" },
+    { name: "Umi Nurfadhilah S", position: "Wakil Bendahara", image: "/profile/cewe.png" },
+    { name: "M. Ibnu Tawakal", position: "Kontrol Intrnal", image: "/profile/cowo.png" },
+    { name: "Marisa Siagian", position: "Kontrol Internal", image: "/profile/cewe.png" },
   ];
 
   const elementsRef = useRef([]);
@@ -180,7 +180,7 @@ const Profile = () => {
       </div>
 
       <div
-  className="flex flex-col items-center gap-24 p-16 w-full rounded-3xl"
+  className="flex flex-col items-center gap-24 p-16 w-full rounded-3xl relative pb-56"
   style={{
     background: "radial-gradient(circle at center, #5a47ce 0%, #232323 100%)",
   }}
@@ -204,7 +204,19 @@ const Profile = () => {
         <h1 className="text-xl font-semibold text-white mt-8 tracking-wide drop-shadow-md">
           {leader.name}
         </h1>
-        <p className="text-base text-gray-200 mt-1 italic">{leader.position}</p>
+        <p
+  className="
+    text-base text-white mt-3 italic 
+    bg-white/20 backdrop-blur-md 
+    border border-white/30 
+    px-4 py-1 
+    rounded-full 
+    shadow-[0_4px_15px_rgba(0,0,0,0.3)]
+  "
+>
+  {leader.position}
+</p>
+
       </div>
     ))}
   </div>
@@ -225,11 +237,56 @@ const Profile = () => {
           />
         </div>
         <h1 className="text-lg font-semibold text-white mt-8">{member.name}</h1>
-        <p className="text-sm text-gray-200 mt-1 italic">{member.position}</p>
+        <p className="
+    text-base text-white mt-3 italic 
+    bg-white/20 backdrop-blur-md 
+    border border-white/30 
+    px-4 py-1 
+    rounded-full 
+    shadow-[0_4px_15px_rgba(0,0,0,0.3)]
+  ">{member.position}</p>
       </div>
     ))}
   </div>
+
+  {/* 🔹 Footer Elegan */}
+  <footer
+    className="absolute bottom-0 left-0 right-0 flex flex-col items-center justify-center gap-6 py-8 bg-white backdrop-blur-lg rounded-t-3xl border-t border-white"
+  >
+    {/* 🔸 Efek transisi halus ke footer */}
+    <div className="absolute -top-10 left-0 right-0 h-10 bg-gradient-to-t from-white/10 to-transparent rounded-t-3xl"></div>
+
+    {/* 🔸 Ikon Sosial Media */}
+    <div className="flex gap-6 relative z-10">
+      <a
+        href="#"
+        className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-[#232323] hover:bg-[#232323] hover:text-white transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.4)]"
+      >
+        <i className="bx bxl-instagram text-2xl"></i>
+      </a>
+      <a
+        href="#"
+        className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-[#232323] hover:bg-[#232323] hover:text-white transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.4)]"
+      >
+        <i className="bx bxl-facebook text-2xl"></i>
+      </a>
+      <a
+        href="#"
+        className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-[#232323] hover:bg-[#232323] hover:text-white transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.4)]"
+      >
+        <i className="bx bx-mail-send text-2xl"></i>
+      </a>
+    </div>
+
+    {/* 🔸 Copyright */}
+    <p className="text-black text-sm mt-2 flex items-center gap-2 relative z-10">
+      <span>Created by <b>HMPS MI .</b> |  <i className="bx bx-copyright text-base"></i> 2025</span>
+    </p>
+  </footer>
 </div>
+
+
+
 
     </div>
   );
