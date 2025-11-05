@@ -3,18 +3,20 @@ import React from 'react';
 const Profile = () => {
   return (
     <div className="flex flex-col items-center text-gray-800 w-full">
-      {/* Gambar background dengan zoom in di mobile */}
+      {/* Gambar background */}
       <div
+      data-aos="fade-up"
+     data-aos-duration="3000"
         className="
           w-screen
-          bg-[url('/bg.png')] 
+          bg-[url('/bg.png')]
           bg-no-repeat 
           bg-center 
           bg-contain 
           sm:bg-contain
           md:bg-cover
-          scale-110 /* ⚡ Zoom in di semua device */
-          sm:scale-100 /* ⚡ Kembali normal di tablet/desktop */
+          scale-110
+          sm:scale-100
           transition-all duration-500
           aspect-[16/10] sm:aspect-[16/9] md:aspect-[16/8]
           -mt-10 
@@ -47,41 +49,42 @@ const Profile = () => {
         tempat belajar dan berorganisasi, tetapi juga wadah untuk mempererat solidaritas, menumbuhkan jiwa 
         kepemimpinan, serta menyiapkan mahasiswa agar siap bersaing di dunia profesional yang dinamis.
         </p>
+      </div>
 
-      </div>{/* 🔹 Logo & teks kabinet */}
-<div className="flex flex-col items-center justify-center -mt-[5rem] mb-20 text-center select-none">
-  {/* 🔸 Logo kabinet */}
-  <div className="inline-block relative">
-    <img
-      src="/title/logo_kabinet.png"
-      alt="Logo Kabinet Evolutionnarine"
-      className="
-        object-contain
-        drop-shadow-xl
-        transition-transform duration-500 hover:scale-110
-      "
-      style={{
-        display: 'inline-block',
-        width: '95rem',      // 📱 di HP hampir full lebar layar
-        maxWidth: '700rem',  // 💻 besar di desktop tapi tetap elegan
-        height: 'auto',     // ⚡ menjaga rasio
-      }}
-    />
-  </div>
+    {/* 🔹 Logo & teks kabinet */}
+    <div className="logo-wrapper flex flex-col items-center justify-center -mt-[5rem] mb-20 text-center select-none w-full">
+      {/* 🔸 Logo kabinet */}
+      <div className="inline-block relative">
+        <img
+          src="/title/logo_kabinet.png"
+          alt="Logo Kabinet Evolutionnarine"
+          className="object-contain drop-shadow-xl transition-transform duration-500 hover:scale-110 
+                    w-[90vw] max-w-[1000px] h-auto"
+        />
+      </div>
 
-  {/* 🔸 Teks di bawah logo */}
-  <div className="-mt-[10rem]">
-    <h1 className="text-2xl sm:text-3xl font-bold tracking-wide text-gray-800 drop-shadow-sm">
-      KABINET EVOLUTIONNARINE
-    </h1>
-    <h2 className="text-sm sm:text-2xl text-gray-600 mt-1">
-      2024 / 2025
-    </h2>
-  </div>
-</div>
+      {/* 🔸 Teks di bawah logo */}
+      <div className="-mt-[1rem] ">
+        <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold tracking-wide text-gray-800 drop-shadow-sm">
+          KABINET EVOLUTIONNARINE
+        </h1>
+        <h2 className="text-base sm:text-lg md:text-xl text-gray-600">
+          2024 / 2025
+        </h2>
+      </div>
+    </div>
 
+    {/* Dibawah Logo sama txt munculkan gambar ini */}
+    {/* 🔹 Background Card Full-Width */}
+    <div className="w-full overflow-hidden">
+      <img
+        src="/bg_card.png"
+        alt="Background Card"
+        className="w-full h-auto object-cover"
+        
+      />
+    </div>
 
-  
     </div>
   );
 };
