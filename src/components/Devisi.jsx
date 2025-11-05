@@ -44,21 +44,28 @@ const Devisi = () => {
       /* 📱 Mobile */
       @media (max-width: 768px) {
         .devisi-img:first-child {
-          margin-top: 7rem !important;
+          margin-top: 5rem !important;
         }
         .devisi-img:not(:first-child) {
           margin-top: -4rem !important;
+        }
+
+        .devisi-img:nth-of-type(2),
+        .devisi-img:nth-of-type(3),
+        .devisi-img:nth-of-type(4),
+        .devisi-img:nth-of-type(5) {
+          margin-top: -5rem !important; /* tumpukan pas */
         }
       }
 
       /* 💻 Mid-range: Tablet landscape - Laptop kecil (770px–1320px) */
       @media (min-width: 769px) and (max-width: 1320px) {
         .devisi-img:first-child {
-          margin-top: 10rem !important;
+          margin-top: 15rem !important;
         }
 
         .devisi-img:not(:first-child) {
-          margin-top: -6rem !important; /* lebih longgar */
+          margin-top: -3rem !important; /* lebih longgar */
         }
 
         .devisi-img:nth-of-type(2),
