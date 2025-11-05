@@ -180,114 +180,116 @@ const Profile = () => {
       </div>
 
       <div
-  className="flex flex-col items-center gap-24 p-16 w-full rounded-3xl relative pb-56"
-  style={{
-    background: "radial-gradient(circle at center, #5a47ce 0%, #232323 100%)",
-  }}
->
-  {/* 🔹 Baris 1: Ketua & Wakil Ketua */}
-  <div className="flex flex-wrap justify-center items-center gap-20 w-full">
-    {leaders.map((leader, index) => (
-      <div
-        key={index}
-        className="flex flex-col items-center bg-white/30 backdrop-blur-lg rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.4)] hover:shadow-[0_15px_50px_rgba(90,71,206,0.7)] hover:scale-105 transition-all duration-500 border border-white/40 w-80 h-[27rem] overflow-hidden"
+        className="flex flex-col items-center gap-24 p-16 w-full rounded-3xl relative pb-56"
+        style={{
+          background: "radial-gradient(circle at center, #5a47ce 0%, #232323 100%)",
+        }}
       >
-        <div className="relative mt-4">
-          {/* 🔹 Efek cahaya glow */}
-          <div className="absolute -inset-2 bg-gradient-to-tr from-purple-400 via-indigo-400 to-transparent opacity-30 blur-2xl rounded-full" />
-          <img
-            src={leader.image}
-            alt={leader.name}
-            className="relative w-48 h-48 rounded-full object-cover border-4 border-white shadow-[0_8px_20px_rgba(0,0,0,0.4)]"
-          />
+        {/* 🔹 Baris 1: Ketua & Wakil Ketua - TAMBAH ANIMASI */}
+        <div 
+          ref={addToRefs}
+          className="scroll-animate flex flex-wrap justify-center items-center gap-20 w-full"
+        >
+          {leaders.map((leader, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center bg-white/30 backdrop-blur-lg rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.4)] hover:shadow-[0_15px_50px_rgba(90,71,206,0.7)] hover:scale-105 transition-all duration-500 border border-white/40 w-80 h-[27rem] overflow-hidden"
+            >
+              <div className="relative mt-4">
+                {/* 🔹 Efek cahaya glow */}
+                <div className="absolute -inset-2 bg-gradient-to-tr from-purple-400 via-indigo-400 to-transparent opacity-30 blur-2xl rounded-full" />
+                <img
+                  src={leader.image}
+                  alt={leader.name}
+                  className="relative w-48 h-48 rounded-full object-cover border-4 border-white shadow-[0_8px_20px_rgba(0,0,0,0.4)]"
+                />
+              </div>
+              <h1 className="text-xl font-semibold text-white mt-8 tracking-wide drop-shadow-md">
+                {leader.name}
+              </h1>
+              <p
+                className="
+                  text-base text-white mt-3 italic 
+                  bg-white/20 backdrop-blur-md 
+                  border border-white/30 
+                  px-4 py-1 
+                  rounded-full 
+                  shadow-[0_4px_15px_rgba(0,0,0,0.3)]
+                "
+              >
+                {leader.position}
+              </p>
+            </div>
+          ))}
         </div>
-        <h1 className="text-xl font-semibold text-white mt-8 tracking-wide drop-shadow-md">
-          {leader.name}
-        </h1>
-        <p
-  className="
-    text-base text-white mt-3 italic 
-    bg-white/20 backdrop-blur-md 
-    border border-white/30 
-    px-4 py-1 
-    rounded-full 
-    shadow-[0_4px_15px_rgba(0,0,0,0.3)]
-  "
->
-  {leader.position}
-</p>
 
-      </div>
-    ))}
-  </div>
-
-  {/* 🔹 Baris 2: Anggota */}
-  <div className="flex flex-wrap justify-center items-center gap-20 w-full">
-    {members.map((member, index) => (
-      <div
-        key={index}
-        className="flex flex-col items-center bg-white/20 backdrop-blur-lg rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_10px_40px_rgba(90,71,206,0.6)] hover:scale-105 transition-all duration-500 border border-white/30 w-72 h-[25rem] overflow-hidden"
-      >
-        <div className="relative mt-6">
-          <div className="absolute -inset-2 bg-gradient-to-tr from-indigo-400 via-purple-400 to-transparent opacity-25 blur-2xl rounded-full" />
-          <img
-            src={member.image}
-            alt={member.name}
-            className="relative w-40 h-40 rounded-full object-cover border-4 border-white shadow-[0_6px_18px_rgba(0,0,0,0.4)]"
-          />
+        {/* 🔹 Baris 2: Anggota - TAMBAH ANIMASI */}
+        <div 
+          ref={addToRefs}
+          className="scroll-animate flex flex-wrap justify-center items-center gap-20 w-full"
+        >
+          {members.map((member, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center bg-white/20 backdrop-blur-lg rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_10px_40px_rgba(90,71,206,0.6)] hover:scale-105 transition-all duration-500 border border-white/30 w-72 h-[25rem] overflow-hidden"
+            >
+              <div className="relative mt-6">
+                <div className="absolute -inset-2 bg-gradient-to-tr from-indigo-400 via-purple-400 to-transparent opacity-25 blur-2xl rounded-full" />
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="relative w-40 h-40 rounded-full object-cover border-4 border-white shadow-[0_6px_18px_rgba(0,0,0,0.4)]"
+                />
+              </div>
+              <h1 className="text-lg font-semibold text-white mt-8">{member.name}</h1>
+              <p className="
+                text-base text-white mt-3 italic 
+                bg-white/20 backdrop-blur-md 
+                border border-white/30 
+                px-4 py-1 
+                rounded-full 
+                shadow-[0_4px_15px_rgba(0,0,0,0.3)]
+              ">{member.position}</p>
+            </div>
+          ))}
         </div>
-        <h1 className="text-lg font-semibold text-white mt-8">{member.name}</h1>
-        <p className="
-    text-base text-white mt-3 italic 
-    bg-white/20 backdrop-blur-md 
-    border border-white/30 
-    px-4 py-1 
-    rounded-full 
-    shadow-[0_4px_15px_rgba(0,0,0,0.3)]
-  ">{member.position}</p>
+
+        {/* 🔹 Footer Elegan - TAMBAH ANIMASI */}
+        <footer 
+          ref={addToRefs}
+          className="scroll-animate absolute bottom-0 left-0 right-0 flex flex-col items-center justify-center gap-6 py-8 bg-white backdrop-blur-lg rounded-t-3xl border-t border-white"
+        >
+          {/* 🔸 Efek transisi halus ke footer */}
+          <div className="absolute -top-10 left-0 right-0 h-10 bg-gradient-to-t from-white/10 to-transparent rounded-t-3xl"></div>
+
+          {/* 🔸 Ikon Sosial Media */}
+          <div className="flex gap-6 relative z-10">
+            <a
+              href="#"
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-[#232323] hover:bg-[#232323] hover:text-white transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.4)]"
+            >
+              <i className="bx bxl-instagram text-2xl"></i>
+            </a>
+            <a
+              href="#"
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-[#232323] hover:bg-[#232323] hover:text-white transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.4)]"
+            >
+              <i className="bx bxl-facebook text-2xl"></i>
+            </a>
+            <a
+              href="#"
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-[#232323] hover:bg-[#232323] hover:text-white transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.4)]"
+            >
+              <i className="bx bx-mail-send text-2xl"></i>
+            </a>
+          </div>
+
+          {/* 🔸 Copyright */}
+          <p className="text-black text-sm mt-2 flex items-center gap-2 relative z-10">
+            <span>Created by <b>HMPS MI .</b> |  <i className="bx bx-copyright text-base"></i> 2025</span>
+          </p>
+        </footer>
       </div>
-    ))}
-  </div>
-
-  {/* 🔹 Footer Elegan */}
-  <footer
-    className="absolute bottom-0 left-0 right-0 flex flex-col items-center justify-center gap-6 py-8 bg-white backdrop-blur-lg rounded-t-3xl border-t border-white"
-  >
-    {/* 🔸 Efek transisi halus ke footer */}
-    <div className="absolute -top-10 left-0 right-0 h-10 bg-gradient-to-t from-white/10 to-transparent rounded-t-3xl"></div>
-
-    {/* 🔸 Ikon Sosial Media */}
-    <div className="flex gap-6 relative z-10">
-      <a
-        href="#"
-        className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-[#232323] hover:bg-[#232323] hover:text-white transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.4)]"
-      >
-        <i className="bx bxl-instagram text-2xl"></i>
-      </a>
-      <a
-        href="#"
-        className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-[#232323] hover:bg-[#232323] hover:text-white transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.4)]"
-      >
-        <i className="bx bxl-facebook text-2xl"></i>
-      </a>
-      <a
-        href="#"
-        className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-[#232323] hover:bg-[#232323] hover:text-white transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.4)]"
-      >
-        <i className="bx bx-mail-send text-2xl"></i>
-      </a>
-    </div>
-
-    {/* 🔸 Copyright */}
-    <p className="text-black text-sm mt-2 flex items-center gap-2 relative z-10">
-      <span>Created by <b>HMPS MI .</b> |  <i className="bx bx-copyright text-base"></i> 2025</span>
-    </p>
-  </footer>
-</div>
-
-
-
-
     </div>
   );
 };
