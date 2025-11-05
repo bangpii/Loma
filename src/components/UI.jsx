@@ -193,7 +193,7 @@ export const UI = () => {
       data-aos-easing="ease-out"
     >
 
-      {/* Tombol silang */}
+
       <button
         className="
           absolute top-4 right-4
