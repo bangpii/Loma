@@ -113,17 +113,13 @@ const Profile = () => {
             className="object-contain drop-shadow-xl transition-transform duration-500 hover:scale-110"
           />
         </div>
-
-        {/* 🔸 Teks di bawah logo */}
-        <div className="-mt-[1rem]">
-          <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold tracking-wide text-gray-800 drop-shadow-sm">
-            KABINET EVOLUTIONNARINE
-          </h1>
-          <h2 className="text-base sm:text-lg md:text-xl text-gray-600">
-            2024 / 2025
-          </h2>
-        </div>
       </div>
+
+      <h1 className="-mt-[5rem] font-bold mb-10 text-center 
+               text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+               px-4 md:px-0">
+      KABINET HMPS MI 2024 - 2025
+    </h1>
 
       <div
         className="flex flex-col items-center gap-24 p-16 w-full rounded-3xl relative pb-56"
