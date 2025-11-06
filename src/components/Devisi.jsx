@@ -122,11 +122,15 @@ const Devisi = () => {
 
 
 <div
-        className="flex flex-col items-center gap-24 p-16 w-full rounded-3xl relative pb-56"
-        style={{
-          background: "radial-gradient(circle at center, #5a47ce 0%, #232323 100%)",
-        }}
-      >
+  className="flex flex-col items-center gap-24 p-16 w-full rounded-3xl relative pb-56 bg-cover bg-center bg-no-repeat"
+  style={{
+    backgroundImage: `
+      radial-gradient(circle at center, #5a47ce 0%, #232323 100%),
+      url('/bg_card.png')
+    `,
+    backgroundBlendMode: 'overlay'
+  }}
+>
 
         {/* 🔹 Baris 2: Anggota - TAMBAH ANIMASI */}
         <div 

@@ -115,18 +115,22 @@ const Profile = () => {
         </div>
       </div>
 
-      <h1 className="-mt-[5rem] font-bold mb-10 text-center 
+      <h1 className="-mt-[5rem] md:-mt-[8rem] lg:-mt-[15rem] font-bold mb-10 text-center 
                text-2xl sm:text-3xl md:text-4xl lg:text-5xl
                px-4 md:px-0">
-      KABINET HMPS MI 2024 - 2025
-    </h1>
+  KABINET HMPS MI <br/>2024 - 2025
+</h1>
 
-      <div
-        className="flex flex-col items-center gap-24 p-16 w-full rounded-3xl relative pb-56"
-        style={{
-          background: "radial-gradient(circle at center, #5a47ce 0%, #232323 100%)",
-        }}
-      >
+    <div
+  className="flex flex-col items-center gap-24 p-16 w-full rounded-3xl relative pb-56 bg-cover bg-center bg-no-repeat"
+  style={{
+    backgroundImage: `
+      radial-gradient(circle at center, #5a47ce 0%, #232323 100%),
+      url('/bg_card.png')
+    `,
+    backgroundBlendMode: 'overlay'
+  }}
+>
         {/* 🔹 Baris 1: Ketua & Wakil Ketua - TANPA ANIMASI */}
         <div 
           className="flex flex-wrap justify-center items-center gap-20 w-full"
