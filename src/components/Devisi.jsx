@@ -107,6 +107,7 @@ const Devisi = () => {
       marginTop: "5rem",
     }}
   />
+  <img src="/devisi/internal.png" className="devisi-img" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} />
   <img src="/devisi/eksternal.png" className="devisi-img" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} />
   <img src="/devisi/iptek.png" className="devisi-img" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} />
   <img src="/devisi/sdm.png" className="devisi-img" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} />
