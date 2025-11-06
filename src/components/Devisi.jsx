@@ -47,7 +47,7 @@ const Devisi = () => {
           margin-top: 5rem !important;
         }
         .devisi-img:not(:first-child) {
-          margin-top: -1rem !important;
+          margin-top: -4rem !important;
         }
 
         .devisi-img:nth-of-type(2),
@@ -65,7 +65,7 @@ const Devisi = () => {
         }
 
         .devisi-img:not(:first-child) {
-          margin-top: -1rem !important; /* lebih longgar */
+          margin-top: -4rem !important; /* lebih longgar */
         }
 
         .devisi-img:nth-of-type(2),
@@ -83,7 +83,7 @@ const Devisi = () => {
         }
 
         .devisi-img:not(:first-child) {
-          margin-top: -1rem !important;
+          margin-top: -4rem !important;
         }
 
         .devisi-img:nth-of-type(2),
