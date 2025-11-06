@@ -47,7 +47,7 @@ const Devisi = () => {
           margin-top: 5rem !important;
         }
         .devisi-img:not(:first-child) {
-          margin-top: 4rem !important;
+          margin-top: -1rem !important;
         }
 
         .devisi-img:nth-of-type(2),
@@ -65,7 +65,7 @@ const Devisi = () => {
         }
 
         .devisi-img:not(:first-child) {
-          margin-top: 4rem !important; /* lebih longgar */
+          margin-top: -1rem !important; /* lebih longgar */
         }
 
         .devisi-img:nth-of-type(2),
@@ -83,7 +83,7 @@ const Devisi = () => {
         }
 
         .devisi-img:not(:first-child) {
-          margin-top: 4rem !important;
+          margin-top: -1rem !important;
         }
 
         .devisi-img:nth-of-type(2),
@@ -96,17 +96,7 @@ const Devisi = () => {
     `}
   </style>
 
-  <img
-    src="/public/devisi/internal.png"
-    className="devisi-img"
-    style={{
-      width: "100%",
-      height: "auto",
-      display: "block",
-      objectFit: "cover",
-      marginTop: "5rem",
-    }}
-  />
+
   <img src="/devisi/internal.png" className="devisi-img" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} />
   <img src="/devisi/eksternal.png" className="devisi-img" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} />
   <img src="/devisi/iptek.png" className="devisi-img" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} />
