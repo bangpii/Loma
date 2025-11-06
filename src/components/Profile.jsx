@@ -25,83 +25,8 @@ const Profile = () => {
     { name: "Marisa Siagian", position: "Kontrol Internal", image: "/profile/cewe.png" },
   ];
 
-  const elementsRef = useRef([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-up');
-            entry.target.classList.remove('animate-fade-out-down');
-          } else {
-            entry.target.classList.add('animate-fade-out-down');
-            entry.target.classList.remove('animate-fade-in-up');
-          }
-        });
-      },
-      { 
-        threshold: 0.1,
-        rootMargin: '-50px 0px -50px 0px'
-      }
-    );
-
-    elementsRef.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
-
-    return () => {
-      elementsRef.current.forEach((el) => {
-        if (el) observer.unobserve(el);
-      });
-    };
-  }, []);
-
-  const addToRefs = (el) => {
-    if (el && !elementsRef.current.includes(el)) {
-      elementsRef.current.push(el);
-    }
-  };
-
   return (
     <div className="flex flex-col items-center text-gray-800 w-full">
-      <style jsx global>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes fadeOutDown {
-          from {
-            opacity: 1;
-            transform: translateY(0);
-          }
-          to {
-            opacity: 0;
-            transform: translateY(50px);
-          }
-        }
-        
-        .animate-fade-in-up {
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-        
-        .animate-fade-out-down {
-          animation: fadeOutDown 0.6s ease-in forwards;
-        }
-        
-        .scroll-animate {
-          opacity: 0;
-          transform: translateY(50px);
-          transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-      `}</style>
 
       {/* Gambar background - tetap pakai AOS */}
       <div
@@ -128,59 +53,57 @@ const Profile = () => {
         "
       />
 
-      {/* Konten teks - pakai CSS animation */}
+      {/* Konten teks - tanpa animasi */}
       <div 
-  ref={addToRefs}
-  className="scroll-animate w-full max-w-3xl px-5 sm:px-6 py-6 text-left space-y-4 mb-[5rem] content-hmps"
->
-  <style>
-    {`
-      /* 💻 Desktop besar (1321px ke atas) */
-      @media (min-width: 1321px) {
-        .content-hmps {
-          max-width: 80rem !important; /* Lebarkan kontainer */
-          padding-left: 8rem !important;
-          padding-right: 8rem !important;
-        }
+        className="w-full max-w-3xl px-5 sm:px-6 py-6 text-left space-y-4 mb-[5rem] content-hmps"
+      >
+        <style>
+          {`
+            /* 💻 Desktop besar (1321px ke atas) */
+            @media (min-width: 1321px) {
+              .content-hmps {
+                max-width: 80rem !important; /* Lebarkan kontainer */
+                padding-left: 8rem !important;
+                padding-right: 8rem !important;
+              }
 
-        .content-hmps h1 {
-          margin-bottom: 4rem !important;
-          font-size: 2.75rem !important; /* lebih besar dari 2xl */
-        }
+              .content-hmps h1 {
+                margin-bottom: 4rem !important;
+                font-size: 2.75rem !important; /* lebih besar dari 2xl */
+              }
 
-        .content-hmps p {
-          font-size: 1.3rem !important;
-          line-height: 2rem !important;
-        }
-      }
-    `}
-  </style>
+              .content-hmps p {
+                font-size: 1.3rem !important;
+                line-height: 2rem !important;
+              }
+            }
+          `}
+        </style>
 
-  <h1 className="text-2xl font-bold text-center mb-4">APA ITU HMPS MI?</h1>
-  <p className="leading-relaxed text-justify">
-    HMPS MI (Himpunan Mahasiswa Program Studi Manajemen Informatika) adalah wadah organisasi 
-    bagi mahasiswa Program Studi Manajemen Informatika untuk mengembangkan potensi akademik, 
-    sosial, dan kepemimpinan. HMPS MI menjadi sarana untuk menampung aspirasi serta menjembatani 
-    komunikasi antara mahasiswa dan pihak kampus.
-  </p>
-  <p className="leading-relaxed text-justify">
-    Selain itu, HMPS MI juga berperan aktif dalam menyelenggarakan berbagai kegiatan seperti 
-    pelatihan, seminar, pengabdian masyarakat, serta kegiatan yang menunjang kreativitas dan 
-    inovasi mahasiswa. Dengan semangat kolaborasi, HMPS MI berkomitmen membentuk mahasiswa yang 
-    berprestasi dan berkontribusi positif bagi masyarakat.
-  </p>
-  <p className="leading-relaxed text-justify">
-    Melalui berbagai program kerja dan kegiatan internal maupun eksternal, HMPS MI berupaya menciptakan 
-    lingkungan yang inspiratif dan produktif bagi seluruh anggotanya. Organisasi ini tidak hanya menjadi 
-    tempat belajar dan berorganisasi, tetapi juga wadah untuk mempererat solidaritas, menumbuhkan jiwa 
-    kepemimpinan, serta menyiapkan mahasiswa agar siap bersaing di dunia profesional yang dinamis.
-  </p>
-</div>
+        <h1 className="text-2xl font-bold text-center mb-4">APA ITU HMPS MI?</h1>
+        <p className="leading-relaxed text-justify">
+          HMPS MI (Himpunan Mahasiswa Program Studi Manajemen Informatika) adalah wadah organisasi 
+          bagi mahasiswa Program Studi Manajemen Informatika untuk mengembangkan potensi akademik, 
+          sosial, dan kepemimpinan. HMPS MI menjadi sarana untuk menampung aspirasi serta menjembatani 
+          komunikasi antara mahasiswa dan pihak kampus.
+        </p>
+        <p className="leading-relaxed text-justify">
+          Selain itu, HMPS MI juga berperan aktif dalam menyelenggarakan berbagai kegiatan seperti 
+          pelatihan, seminar, pengabdian masyarakat, serta kegiatan yang menunjang kreativitas dan 
+          inovasi mahasiswa. Dengan semangat kolaborasi, HMPS MI berkomitmen membentuk mahasiswa yang 
+          berprestasi dan berkontribusi positif bagi masyarakat.
+        </p>
+        <p className="leading-relaxed text-justify">
+          Melalui berbagai program kerja dan kegiatan internal maupun eksternal, HMPS MI berupaya menciptakan 
+          lingkungan yang inspiratif dan produktif bagi seluruh anggotanya. Organisasi ini tidak hanya menjadi 
+          tempat belajar dan berorganisasi, tetapi juga wadah untuk mempererat solidaritas, menumbuhkan jiwa 
+          kepemimpinan, serta menyiapkan mahasiswa agar siap bersaing di dunia profesional yang dinamis.
+        </p>
+      </div>
 
-      {/* 🔹 Logo & teks kabinet - pakai CSS animation */}
+      {/* 🔹 Logo & teks kabinet - tanpa animasi */}
       <div 
-        ref={addToRefs}
-        className="scroll-animate logo-wrapper flex flex-col items-center justify-center -mt-[5rem] mb-20 text-center select-none w-full"
+        className="logo-wrapper flex flex-col items-center justify-center -mt-[5rem] mb-20 text-center select-none w-full"
       >
         {/* 🔸 Logo kabinet */}
         <div className="inline-block relative">
@@ -208,10 +131,9 @@ const Profile = () => {
           background: "radial-gradient(circle at center, #5a47ce 0%, #232323 100%)",
         }}
       >
-        {/* 🔹 Baris 1: Ketua & Wakil Ketua - TAMBAH ANIMASI */}
+        {/* 🔹 Baris 1: Ketua & Wakil Ketua - TANPA ANIMASI */}
         <div 
-          ref={addToRefs}
-          className="scroll-animate flex flex-wrap justify-center items-center gap-20 w-full"
+          className="flex flex-wrap justify-center items-center gap-20 w-full"
         >
           {leaders.map((leader, index) => (
             <div
@@ -246,10 +168,9 @@ const Profile = () => {
           ))}
         </div>
 
-        {/* 🔹 Baris 2: Anggota - TAMBAH ANIMASI */}
+        {/* 🔹 Baris 2: Anggota - TANPA ANIMASI */}
         <div 
-          ref={addToRefs}
-          className="scroll-animate flex flex-wrap justify-center items-center gap-20 w-full"
+          className="flex flex-wrap justify-center items-center gap-20 w-full"
         >
           {members.map((member, index) => (
             <div
@@ -277,9 +198,8 @@ const Profile = () => {
           ))}
         </div>
 
-      
+        {/* Footer - tanpa animasi */}
         <footer 
-
           className="absolute bottom-0 left-0 right-0 flex flex-col items-center justify-center gap-6 py-8 bg-white backdrop-blur-lg rounded-t-3xl border-t border-white"
         >
           {/* 🔸 Efek transisi halus ke footer */}
