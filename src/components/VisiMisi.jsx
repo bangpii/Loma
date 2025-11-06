@@ -139,8 +139,8 @@ const VisiMisi = () => {
           {selectedContent && (
   <div className="
     fixed inset-0 w-full 
-    min-h-[250rem]         /* 📱 Default untuk mobile */
-    md:min-h-[110rem]      /* 💻 Untuk layar medium ke atas (laptop) */
+    min-h-[270rem]         /* 📱 Default untuk mobile */
+    md:min-h-[170rem]      /* 💻 Untuk layar medium ke atas (laptop) */
     h-full 
     bg-black/70 backdrop-blur-lg 
     z-[99]
