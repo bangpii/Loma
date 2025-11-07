@@ -23,7 +23,7 @@ const Devisi = () => {
   return (
     <div className="flex flex-col items-center text-gray-800 w-full">
 
-    {/* Gambar background - tetap pakai AOS */}
+
     <div
         data-aos="fade-up"
         data-aos-duration="3000"
@@ -51,7 +51,7 @@ const Devisi = () => {
 <div className="flex flex-col items-center w-full overflow-visible">
   <style>
     {`
-      /* 📱 Mobile */
+
       @media (max-width: 768px) {
         .devisi-img:first-child {
           margin-top: 5rem !important;
@@ -68,7 +68,6 @@ const Devisi = () => {
         }
       }
 
-      /* 💻 Mid-range: Tablet landscape - Laptop kecil (770px–1320px) */
       @media (min-width: 769px) and (max-width: 1320px) {
         .devisi-img:first-child {
           margin-top: 15rem !important;
@@ -86,7 +85,7 @@ const Devisi = () => {
         }
       }
 
-      /* 🖥️ Desktop besar */
+
       @media (min-width: 1321px) {
         .devisi-img:first-child {
           margin-top: 10rem !important;
@@ -132,7 +131,6 @@ const Devisi = () => {
   }}
 >
 
-        {/* 🔹 Baris 2: Anggota - TAMBAH ANIMASI */}
         <div 
           className="flex flex-wrap justify-center items-center gap-20 w-full"
         >
@@ -167,10 +165,10 @@ const Devisi = () => {
 
           className="absolute bottom-0 left-0 right-0 flex flex-col items-center justify-center gap-6 py-8 bg-white backdrop-blur-lg rounded-t-3xl border-t border-white"
         >
-          {/* 🔸 Efek transisi halus ke footer */}
+
           <div className="absolute -top-10 left-0 right-0 h-10 bg-gradient-to-t from-white/10 to-transparent rounded-t-3xl"></div>
 
-          {/* 🔸 Ikon Sosial Media */}
+
           <div className="flex gap-6 relative z-10">
             <a
               href="#"

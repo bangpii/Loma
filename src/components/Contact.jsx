@@ -18,16 +18,15 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     
-    // Format pesan untuk WhatsApp
+
     const message = `Halo, saya ${formData.nama}%0A%0A` +
                    `Email: ${formData.email}%0A` +
                    `Nomor HP: ${formData.nomor}%0A%0A` +
                    `Pesan:%0A${formData.pesan}`
     
-    // Redirect ke WhatsApp
+
     window.open(`https://wa.me/?text=${message}`, '_blank')
-    
-    // Reset form
+
     setFormData({
       nama: '',
       email: '',
@@ -39,8 +38,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white py-12 px-4">
       <div className="max-w-4xl mx-auto">
-        
-        {/* Header Section */}
+
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
             Hubungi Kami
@@ -52,7 +50,7 @@ const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Contact Information */}
+  
           <div className="space-y-8">
             <div>
               <h2 className="text-2xl font-bold text-gray-800 mb-6">Informasi Kontak</h2>
@@ -61,7 +59,7 @@ const Contact = () => {
               </p>
             </div>
 
-            {/* Contact Details */}
+ 
             <div className="space-y-6">
               <div className="flex items-start space-x-4 p-4 bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
                 <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
@@ -94,7 +92,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Social Media */}
+
             <div className="pt-6">
               <h3 className="font-semibold text-gray-800 mb-4">Ikuti Kami</h3>
               <div className="flex space-x-4">
@@ -120,11 +118,11 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
+
           <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Kirim Pesan</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Nama Lengkap */}
+
               <div>
                 <label htmlFor="nama" className="block text-sm font-medium text-gray-700 mb-2">
                   Nama Lengkap *
@@ -141,7 +139,7 @@ const Contact = () => {
                 />
               </div>
 
-              {/* Email */}
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                   Email *
@@ -158,7 +156,7 @@ const Contact = () => {
                 />
               </div>
 
-              {/* Nomor Handphone */}
+
               <div>
                 <label htmlFor="nomor" className="block text-sm font-medium text-gray-700 mb-2">
                   Nomor Handphone *
@@ -175,7 +173,6 @@ const Contact = () => {
                 />
               </div>
 
-              {/* Pesan */}
               <div>
                 <label htmlFor="pesan" className="block text-sm font-medium text-gray-700 mb-2">
                   Pesan *
@@ -192,7 +189,7 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              {/* Submit Button */}
+
               <button
                 type="submit"
                 className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
@@ -206,14 +203,12 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Footer - Tampil setelah semua konten */}
         <footer className="relative z-10 bg-white border-t border-gray-200 py-8 mt-16">
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex flex-col items-center justify-center gap-6">
-              {/* 🔸 Efek transisi halus ke footer */}
+
               <div className="absolute -top-10 left-0 right-0 h-10 bg-gradient-to-t from-white/10 to-transparent rounded-t-3xl"></div>
 
-              {/* 🔸 Ikon Sosial Media */}
               <div className="flex gap-6 relative z-10">
                 <a
                   href="#"
@@ -235,7 +230,7 @@ const Contact = () => {
                 </a>
               </div>
 
-              {/* 🔸 Copyright */}
+
               <p className="text-black text-sm mt-2 flex items-center gap-2 relative z-10">
                 <span>Created by <b>HMPS MI .</b> |  <i className="bx bx-copyright text-base"></i> 2025</span>
               </p>

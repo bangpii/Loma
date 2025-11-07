@@ -1,8 +1,18 @@
 import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "../admin/Header";
 import NavigasiKiri from "../admin/NavigasiKiri";
+import Dashboard from "../admin/Dashboard";
+import BPH from "../admin/BPH";
+import Devisi from "../admin/Devisi";
+import Team from "../admin/Team";
+import Anggota from "../admin/Anggota";
+import VisiMisi from "../admin/VisiMisi";
+import Gallery from "../admin/Gallery";
+import Article from "../admin/Article";
+import News from "../admin/News";
 
-const Admin = ({ children }) => {
+const Admin = () => {
   return (
     <div
       style={{
@@ -49,15 +59,51 @@ const Admin = ({ children }) => {
         {/* Konten dengan layout flex untuk full height */}
         <div className="flex flex-col h-full" style={{ position: "relative", zIndex: 1, minHeight: "calc(93vh - 3rem)" }}>
           <Header/>
-          <div className="flex flex-1 gap-6">
+          <div className="flex flex-1 gap-6 mt-4">
             {/* Navigasi Kiri - Full height */}
             <div className="flex-shrink-0">
               <NavigasiKiri/>
             </div>
             
-            {/* Area Konten Dinamis - Full height */}
-            <div className="flex-1 bg-gray-50 rounded-2xl p-6 overflow-y-auto">
-              {children}
+            {/* Area Konten Dinamis - Versi Desktop */}
+            <div className="hidden lg:block flex-1 bg-white rounded-2xl overflow-auto">
+              <Routes>
+                <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/bph" element={<BPH />} />
+                <Route path="/devisi" element={<Devisi />} />
+                <Route path="/team" element={<Team />} />
+                <Route path="/anggota" element={<Anggota />} />
+                <Route path="/visimisi" element={<VisiMisi />} />
+                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/article" element={<Article />} />
+                <Route path="/news" element={<News />} />
+              </Routes>
+            </div>
+
+            {/* Area Konten Dinamis - Versi Mobile (Fixed Position) */}
+            <div className="lg:hidden fixed inset-0 bg-white rounded-2xl overflow-auto z-30 ml-0 transition-all duration-300" 
+                 style={{ 
+                   top: '2rem', 
+                   left: '2rem', 
+                   right: '2rem', 
+                   bottom: '2rem',
+                   transform: 'perspective(1000px) rotateX(1deg)'
+                 }}>
+              <div className="h-full overflow-auto">
+                <Routes>
+                  <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/bph" element={<BPH />} />
+                  <Route path="/devisi" element={<Devisi />} />
+                  <Route path="/team" element={<Team />} />
+                  <Route path="/anggota" element={<Anggota />} />
+                  <Route path="/visimisi" element={<VisiMisi />} />
+                  <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/article" element={<Article />} />
+                  <Route path="/news" element={<News />} />
+                </Routes>
+              </div>
             </div>
           </div>
         </div>
