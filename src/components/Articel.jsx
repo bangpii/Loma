@@ -16,6 +16,7 @@ const articel = [
       "/article/11.jpg",
       "/article/12.jpg",
       "/article/13.jpg",
+      
     ]
   }
 ]
@@ -40,7 +41,7 @@ const Articel = () => {
         {/* Header Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
-            Berita & Kegiatan
+            Artikel HMPS MI
           </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full mx-auto mb-6"></div>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
