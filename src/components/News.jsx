@@ -11,11 +11,6 @@ const news = [
       "/news/06.jpg",
       "/news/07.jpg",
       "/news/08.jpg",
-      "/news/09.jpg",
-      "/news/10.jpg",
-      "/news/11.jpg",
-      "/news/12.jpg",
-      "/news/13.jpg",
     ]
   }
 ]

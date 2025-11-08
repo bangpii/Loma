@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 
 const NavigasiKiri = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const [showLogoutModal, setShowLogoutModal] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -42,7 +43,17 @@ const NavigasiKiri = () => {
   }
 
   const handleLogout = () => {
-    console.log('Logout clicked')
+    setShowLogoutModal(true)
+  }
+
+  const handleConfirmLogout = () => {
+    console.log('Logout confirmed')
+    // Tambahkan logic logout disini
+    setShowLogoutModal(false)
+  }
+
+  const handleCancelLogout = () => {
+    setShowLogoutModal(false)
   }
 
   return (
@@ -53,6 +64,49 @@ const NavigasiKiri = () => {
           className="lg:hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 transition-opacity duration-300"
           onClick={() => setIsMobileOpen(false)}
         />
+      )}
+
+      {/* Modal Logout Confirmation */}
+      {showLogoutModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md">
+            {/* Modal Header */}
+            <div className="flex justify-between items-center p-6 border-b border-gray-200">
+              <h3 className="text-xl font-bold text-gray-800 font-poppins">
+                Konfirmasi Logout
+              </h3>
+              <button 
+                onClick={handleCancelLogout}
+                className="w-8 h-8 bg-gray-100 text-gray-600 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors duration-200"
+              >
+                <i className="bx bx-x text-lg"></i>
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6">
+              <p className="text-gray-600 font-poppins text-center">
+                Apakah Anda yakin ingin keluar dari sistem?
+              </p>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="flex justify-end space-x-3 p-6 border-t border-gray-200">
+              <button 
+                onClick={handleCancelLogout}
+                className="px-6 py-2 text-gray-600 font-poppins font-medium rounded-lg hover:bg-gray-100 transition-colors duration-200"
+              >
+                Batal
+              </button>
+              <button 
+                onClick={handleConfirmLogout}
+                className="px-6 py-2 bg-red-600 text-white font-poppins font-medium rounded-lg hover:bg-red-700 transition-colors duration-200"
+              >
+                Ya, Keluar
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       <div className="flex h-full">
