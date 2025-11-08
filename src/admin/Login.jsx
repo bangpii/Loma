@@ -115,7 +115,7 @@ const Login = () => {
           {/* Footer */}
           <div className="mt-6 text-center">
             <p className="text-gray-500 font-poppins text-xs">
-              &copy; 2024 HMPS MI - Management Informatika
+              &copy; 2025 HMPS MI - Management Informatika
             </p>
           </div>
         </div>
