@@ -27,10 +27,6 @@ const dataTable = [
   { id: 3, nama: 'Budi Santoso', jabatan: 'Sekretaris', prodi: 'Informatika' },
   { id: 4, nama: 'Maya Sari', jabatan: 'Bendahara', prodi: 'Informatika' },
   { id: 5, nama: 'Rizki Pratama', jabatan: 'Koordinator Dev', prodi: 'Informatika' },
-  { id: 3, nama: 'Budi Santoso', jabatan: 'Sekretaris', prodi: 'Informatika' },
-  { id: 4, nama: 'Maya Sari', jabatan: 'Bendahara', prodi: 'Informatika' },
-  { id: 5, nama: 'Rizki Pratama', jabatan: 'Koordinator Dev', prodi: 'Informatika' },
-  
 ]
 
 const Dashboard = () => {

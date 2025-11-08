@@ -84,7 +84,7 @@ const Admin = () => {
             {/* Area Konten Dinamis - Versi Mobile (Fixed Position) */}
             <div className="lg:hidden fixed inset-0 bg-white rounded-2xl overflow-auto z-30 ml-0 transition-all duration-300" 
                  style={{ 
-                   top: '2rem', 
+                   top: '8rem', 
                    left: '2rem', 
                    right: '2rem', 
                    bottom: '2rem',
